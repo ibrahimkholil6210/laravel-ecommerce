@@ -1,0 +1,60 @@
+
+
+.sidebar-menu .treeview-menu>li:before {
+    width: 2px;
+    bottom: 0;
+    background: #1e282c;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 33px;
+}
+
+.sidebar-menu .treeview-menu>li>a::before {
+    left: -6px;
+    top: 15px;
+    width: 15px;
+    content: ' ';
+    position: absolute;
+    display: inline-block;
+    border: 1px solid #1e282c;
+}
+
+.sidebar-menu .treeview-menu > li > a {
+    margin-left: 34px;
+}
+
+
+.content-header {
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.user-panel {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+    min-height: 65px;
+}
+
+.user-panel>.info {
+    padding: 5px 5px 5px 5px;
+    line-height: 1;
+    text-align: center;
+
+    position: relative;
+    left: 0;
+}
+
+.checkbox, .radio {
+    position: relative;
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.control-sidebar-menu .menu-info {
+    margin-left: 45px;
+    margin-top: 9px;
+}
