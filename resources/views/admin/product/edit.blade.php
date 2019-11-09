@@ -1,14 +1,14 @@
 @extends('admin.master')
-@section('title','Create Product')
+@section('title','Edit Product')
 @section('content')
 
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <section class="content-header">
-        <h1><i class="fa fa-clipboard"></i> Add Product <small>Add new product</small></h1>
+        <h1><i class="fa fa-clipboard"></i> Edit Product <small>Edit new product</small></h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-          <li class="active">Add Product</li>
+          <li class="active">Edit Product</li>
         </ol>
       </section>
 
@@ -19,7 +19,7 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Add Product</h3>
+              <h3 class="box-title">Edit Product</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -35,15 +35,16 @@
               		<div class="col-md-3"></div>
               		<div class="col-md-6">
               			@include('flash')
-              			<form action="/adminpanel/product/store" method="POST" enctype="multipart/form-data">
-              				{{ csrf_field() }}
+              			<form action="/adminpanel/product/17" method="POST" enctype="multipart/form-data">
+              				@csrf
+                      @method('PUT')
               				<div class="form-group">
               					<label for="product_title">Name Of Product*</label>
-              					<input type="text" id="product_title" name="product_title" placeholder="Name of product" class="form-control">
+              					<input type="text" id="product_title" name="product_title" value="{{ $product->product_name }}" class="form-control">
               				</div>
               				<div class="form-group">
               					<label for="product_description">Description Of Product*</label>
-              					<textarea name="product_description" id="product_description" class="form-control" placeholder="Description of product"></textarea>
+              					<textarea name="product_description" id="product_description" class="form-control">{{ $product->product_description }}</textarea>
               				</div>
               				<div class="form-group">
               					<label for="product_category">Category Of Product*</label>
@@ -54,19 +55,14 @@
               				</div>
               				<div class="form-group">
               					<label for="product_quantity">Quantity Of Product*</label>
-              					<input type="number" id="product_quantity" name="product_quantity" placeholder="50" class="form-control">
+              					<input type="number" id="product_quantity" name="product_quantity" value="{{ $product->product_quantity }}" class="form-control">
               				</div>
               				<div class="form-group">
               					<label for="product_price">Price Of Product*</label>
-              					<input type="number" id="product_price" name="product_price" placeholder="50" class="form-control">
+              					<input type="number" id="product_price" name="product_price" value="{{ $product->product_price }}" class="form-control">
               				</div>
 
-              				<div class="form-group">
-              					<label for="product_image">Image Of Product*</label>
-              					<input type="file" id="product_image" name="product_image" class="form-control">
-              				</div>
-
-              				<button type="submit" name="submit" class="btn btn-success btn-block">Submit</button>
+              				<button type="submit" name="submit" class="btn btn-success btn-block">Update</button>
 
               			</form>
               		</div>

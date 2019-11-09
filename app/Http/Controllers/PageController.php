@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class PageController extends Controller
 {
@@ -10,7 +11,9 @@ class PageController extends Controller
     public function home(){
     	return view('index');
     }
-    public function product_create(){
-    	return view('admin.product.create');
+
+    public function productshow(){
+    	$product = Product::all();
+        return view('product',compact('product'));
     }
 }

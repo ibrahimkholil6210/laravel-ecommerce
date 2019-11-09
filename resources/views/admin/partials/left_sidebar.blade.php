@@ -28,8 +28,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/adminpanel/product/create">All Product</a></li>
-            <li><a href="notice-add">Add New</a></li>
+            <li><a href="/adminpanel/product/index">All Product</a></li>
+            <li><a href="/adminpanel/product/create">Add Product</a></li>
           </ul>
         </li>
 
