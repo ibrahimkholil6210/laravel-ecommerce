@@ -1,14 +1,14 @@
 @extends('admin.master')
-@section('title','Create Product')
+@section('title','Create Category')
 @section('content')
 
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <section class="content-header">
-        <h1><i class="fa fa-clipboard"></i> Add Product <small>Add new product</small></h1>
+        <h1><i class="fa fa-clipboard"></i> Add Category <small>Add new Category</small></h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-          <li class="active">Add Product</li>
+          <li class="active">Add Category</li>
         </ol>
       </section>
 
@@ -19,7 +19,7 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Add Product</h3>
+              <h3 class="box-title">Add Category</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -35,37 +35,24 @@
               		<div class="col-md-3"></div>
               		<div class="col-md-6">
               			@include('flash')
-              			<form action="/adminpanel/product/store" method="POST" enctype="multipart/form-data">
+              			<form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
               				{{ csrf_field() }}
               				<div class="form-group">
-              					<label for="product_title">Name Of Product*</label>
-              					<input type="text" id="product_title" name="product_title" placeholder="Name of product" class="form-control">
+              					<label for="category_title">Name Of Category*</label>
+              					<input type="text" id="category_title" name="category_title" placeholder="Name of Category" class="form-control">
               				</div>
               				<div class="form-group">
-              					<label for="product_description">Description Of Product*</label>
-              					<textarea name="product_description" id="product_description" class="form-control" placeholder="Description of product"></textarea>
-              				</div>
-              				<div class="form-group">
-              					<label for="product_category">Category Of Product*</label>
-              					<select name="product_category" id="product_category" class="form-control">
-                          <option value="">Select</option>
+              					<label for="category_parent">Parent Of Category*</label>
+              					<select name="category_parent" id="category_parent" class="form-control">
+              						<option value="">Select</option>
                           @foreach($categories as $category)
-              						<option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                          <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                           @endforeach
               					</select>
               				</div>
               				<div class="form-group">
-              					<label for="product_quantity">Quantity Of Product*</label>
-              					<input type="number" id="product_quantity" name="product_quantity" placeholder="50" class="form-control">
-              				</div>
-              				<div class="form-group">
-              					<label for="product_price">Price Of Product*</label>
-              					<input type="number" id="product_price" name="product_price" placeholder="50" class="form-control">
-              				</div>
-
-              				<div class="form-group">
-              					<label for="product_image">Image Of Product*</label>
-              					<input type="file" id="product_image" name="product_image" class="form-control">
+              					<label for="category_image">Image Of Category*</label>
+              					<input type="file" id="category_image" name="category_image" class="form-control">
               				</div>
 
               				<button type="submit" name="submit" class="btn btn-success btn-block">Submit</button>

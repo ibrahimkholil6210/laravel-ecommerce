@@ -11,13 +11,18 @@
 |
 */
 
-
-Route::get('/productshow', 'PageController@productshow')->name('product');
+//Routes for main application pages
 Route::get('/', 'PageController@home')->name('home');
+Route::get('/products', 'PageController@productshow')->name('product');
+Route::get('/product/{slug}', 'PageController@productdetails')->name('product.details');
+Route::get('/search', 'PageController@search')->name('search');
+Route::get('/category', 'PageController@category')->name('category');
 
 
 Route::group(['prefix' => 'adminpanel'], function () {
+	//Routes for admin
 	Route::get('/', 'AdminController@index')->name('admin.index');
+	//Routes for Product
 	Route::get('/product/create', 'ProductController@create')->name('product.create');
 	Route::post('/product/store', 'ProductController@store')->name('product.store');
 	Route::get('/product/index', 'ProductController@index')->name('product.index');
@@ -25,6 +30,16 @@ Route::group(['prefix' => 'adminpanel'], function () {
 	Route::get('/product/{id}/edit', 'ProductController@edit')->name('product.edit');
 	Route::put('/product/{id}', 'ProductController@update')->name('product.update');
 	Route::delete('/product/{id}', 'ProductController@destroy')->name('product.delete');
+
+
+
+	//Routes for Category
+	Route::get('/category/index', 'CategoryController@index')->name('category.index');
+	Route::get('/category/create', 'CategoryController@create')->name('category.create');
+	Route::post('/category/store', 'CategoryController@store')->name('category.store');
+	Route::get('/category/{id}/edit', 'CategoryController@edit')->name('category.edit');
+	Route::put('/category/{id}', 'CategoryController@update')->name('category.update');
+	Route::delete('/category/{id}', 'CategoryController@destroy')->name('category.delete');
 });
 
 

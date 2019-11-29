@@ -4,3 +4,10 @@
 <script src="{{ asset('admin/assets/dist/js/Theme.min.js') }}"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+<script>
+	window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+	        $(this).remove(); 
+	    });
+	}, 2000);
+</script>

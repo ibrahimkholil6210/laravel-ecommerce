@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 use App\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -31,7 +32,8 @@ class ProductController extends Controller
     public function create()
     {
         //
-        return view('admin.product.create');
+        $categories = Category::all();
+        return view('admin.product.create',compact('categories'));
     }
 
     /**
@@ -74,7 +76,7 @@ class ProductController extends Controller
             $extension              = $files->getClientOriginalExtension();
             $check                  = in_array($extension,$allowedfileExtension);
             $rename_file            = time().".".$extension;
-            $location               = public_path('product/'.$rename_file);
+            $location               = public_path('product_img/'.$rename_file);
 
             if ($check && Image::make($files)->save($location)) {
                 $product_imageobj                   = new ProductImage;

@@ -40,8 +40,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="course">All Category</a></li>
-            <li><a href="add_course">Add New</a></li>
+            <li><a href="{{ route('category.index') }}">All Category</a></li>
+            <li><a href="{{ route('category.create') }}">Add New</a></li>
           </ul>
         </li>
 

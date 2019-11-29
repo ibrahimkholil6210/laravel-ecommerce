@@ -42,7 +42,7 @@
                       <div class="widget-user-header bg-blue">
                         <div class="widget-user-image">
                           @foreach($product->image as $image)
-                          <img class="img-circle" src="{{ asset('product/'.$image->product_images) }}" alt="User Avatar">
+                          <img class="img-circle" src="{{ asset('product_img/'.$image->product_images) }}" alt="User Avatar">
                           @endforeach
                         </div>
                         <!-- /.widget-user-image -->
