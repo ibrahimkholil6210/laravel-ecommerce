@@ -8,7 +8,7 @@
 				<div class="row  justify-content-center">
 					<div class="col-md-3">
 						<div class="single-widget">
-							<h2>About FURNITURE</h2>
+							<h2>About B2X</h2>
 							
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim nobis minus repellat laborum! Rerum voluptas tempora, ipsa quia rem sit repellendus similique autem iure eaque, distinctio ullam saepe dignissimos. Dolorem.</p>
 							
@@ -72,7 +72,7 @@
 
     	$('.slider-cat').slick({
     		autoplay: true,
-  			autoplaySpeed: 2000,
+  			autoplaySpeed: 2000000,
 		  	slidesToShow: 8,
 		  	arrows: false
     	});
@@ -102,7 +102,7 @@
     </script>
 
     <script>
-        var txt = "Search in Bestdeals?";
+        var txt = "Search in B2X?";
         var timeOut;
         var txtLen = txt.length;
         var char = 0;
@@ -123,3 +123,26 @@
             }, humanize);
         }());
     </script>
+
+	<script>
+	    $(".main").click(function(){
+	      $(".child").toggle();
+	    });
+
+	    $('.main').click(function() {
+		    $(this).toggleClass("isopen");
+		});    
+	</script>
+
+	<script>
+
+		$(function() {
+		  var href = window.location.href;
+		  $('.cat-box a').each(function(e,i) {
+		    if (href.indexOf($(this).attr('href')) >= 0) {
+		      $(this).addClass('active');
+		    }
+		  });
+		});
+
+	</script>

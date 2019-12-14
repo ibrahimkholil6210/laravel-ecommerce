@@ -41,7 +41,7 @@
                       <img src="{{ asset('img/hotdeal.png') }}" class="new" style="width: 40px;">
                       <h2>৳ {{ $product->product_price }}</h2>
                       <p>{{ $product->product_name }}</p>
-                      <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
+                      <a href="{{ route('product.details',$product->slug) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
                     </div>
                   </div>
                 </div>

@@ -3,7 +3,7 @@
         <div class="row slider-cat">
           @foreach($categories as $category)
           <div class="cat-box">
-            <a href="#">
+            <a href="{{ route('category.find',$category->id)  }}">
               <div class="cat-img">
                 <img src="{{ asset('category_img/'.$category->category_image) }}" class="card-img-top" alt="...">
               </div>

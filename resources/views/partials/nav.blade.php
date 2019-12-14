@@ -5,22 +5,25 @@
         <div class="row">
           <div class="col-md-2">
             <div class="logo pull-left" style="overflow: hidden;">
-              <a href="javascript:void(0)" class="btn btn-warning dropdown">&#8595;
-                
-              </a>
-              <ul class="dropdown-main">
-                  @foreach($categories as $category)
-                    @if($category->parent_id == NULL)
-                      <li><a href="javascript:void(0)">{{ $category->category_name }}</a></li>
-                      <ul class="dropdown-child">
-                      @foreach($category->subCats as $sub_category)
-                        <li><a href="javascript:void(0)">{!! $sub_category->category_name !!}</a></li>
-                      @endforeach
-                      </ul>
-                    @endif
-                  @endforeach 
-                </ul>
-              <a href="/" class="logo-text">BestDeals</a>
+              <button class="main btn btn-custom"></button>
+
+              <ul class="child">
+                @foreach($categories as $category)
+                  @if($category->parent_id == NULL)
+                    <li>
+                      <a href="{{ route('category.find',$category->id) }}">{{ $category->category_name }}@if(count($category->subCats)) <i class="fa fa-arrow-right"></i>@endif </a>
+                        @if(count($category->subCats))
+                          <ul class="multi-child">
+                            @foreach($category->subCats as $sub)
+                              <li><a href="{{ route('category.find',$sub->id)  }}">{{ $sub->category_name }}</a></li>
+                            @endforeach
+                          </ul>
+                        @endif
+                    </li>  
+                  @endif
+                @endforeach
+              </ul>
+              <a href="/" class="logo-text"><img src="{{ asset('img/logo.png') }}" alt=""></a>
             </div>
           </div>
           <div class="col-md-6">
@@ -32,8 +35,8 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="shop-menu pull-right">
-              <ul>
+            <div class="shop-menu">
+              <ul class="shop-menu-ul">
 
                   <li><a href="/"><i class="fa fa-home"></i></a></li>
                   <li><a href="{{ route('product') }}"><i class="fa fa-shopping-basket"></i></a></li>
@@ -41,15 +44,37 @@
                   <li><a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i> 
                   </a></li>
 
-                  <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{-- <img src="dashboard/uploads/profile/" style="height: 40px;width:40px;margin-top: -10px;border-radius: 22px; padding: 2px;border:1px solid #e1e1e1;"> --}} <i class="fa fa-user-secret"></i></a>
-                        <ul class="dropdown-menu pull-right">
-                          <li style="display: block;"><a href="dashboard">My Account</a></li>
-                          <li style="display: block;"><a href="dashboard/profile.php">Profile</a></li>
-                          <li style="display: block;" role="separator" class="divider"></li>
-                          <li style="display: block;"><a href="dashboard/logout.php">Log out</a></li>
-                        </ul>
+                  @guest
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-sign-in"></i></a>
                       </li>
+                      @if (Route::has('register'))
+                          <li class="nav-item">
+                              <a class="nav-link" href="{{ route('register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
+                          </li>
+                      @endif
+                  @else
+                      <li class="nav-item dropdown">
+                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                              {{ Auth::user()->name }} <span class="caret"></span>
+                          </a>
+
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a href="{{route('dashboard')}}">Dashboard</a>
+                              <a class="dropdown-item" href="{{ route('logout') }}"
+                                 onclick="event.preventDefault();
+                                               document.getElementById('logout-form').submit();">
+                                  <i class="fa fa-sign-out"></i>
+                              </a>
+
+                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                  @csrf
+                              </form>
+                          </div>
+                      </li>
+                  @endguest
+
+                  
                 
 
               </ul>

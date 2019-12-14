@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\ProductImage;
+use App\Country;
+use App\Division;
+use App\District;
 
 class PageController extends Controller
 {
@@ -39,5 +42,32 @@ class PageController extends Controller
     public function category(){
         $categories = Category::all();
         return view('category',compact('categories'));
+    }
+
+    public function categoryfind($id){
+        $category    = Category::findOrFail($id);
+        $categories  = Category::all();
+
+        return view('categoryProduct',compact('category','categories'));
+    }
+
+    public function login(){
+        $categories = Category::all();
+
+        return view('auth.login',compact('categories'));
+    }
+
+    public function register(){
+        $categories = Category::all();
+        $country    = Country::all();
+        $division   = Division::all();
+        $district   = District::all();
+        return view('auth.register',compact('categories','country','division','district'));
+    }
+
+    public function reset(){
+        $categories = Category::all();
+
+        return view('auth.passwords.email',compact('categories'));
     }
 }

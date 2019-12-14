@@ -17,6 +17,7 @@ Route::get('/products', 'PageController@productshow')->name('product');
 Route::get('/product/{slug}', 'PageController@productdetails')->name('product.details');
 Route::get('/search', 'PageController@search')->name('search');
 Route::get('/category', 'PageController@category')->name('category');
+Route::get('/category/{id}', 'PageController@categoryfind')->name('category.find');
 
 
 Route::group(['prefix' => 'adminpanel'], function () {
@@ -44,3 +45,12 @@ Route::group(['prefix' => 'adminpanel'], function () {
 
 
 	
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/login', 'PageController@login')->name('login')->middleware('guest');
+Route::get('/register', 'PageController@register')->name('register')->middleware('guest');
+Route::get('/password/reset', 'PageController@reset')->name('password.request');
+
+Route::get('/dashboard', 'dashboardController@index')->name('dashboard')->middleware('auth');
+Route::get('/dashboard/{slug}/edit', 'dashboardController@edit')->name('dashboard.edit')->middleware('auth');
