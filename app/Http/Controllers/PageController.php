@@ -70,4 +70,8 @@ class PageController extends Controller
 
         return view('auth.passwords.email',compact('categories'));
     }
+
+    public function addToCart(Request $request){
+        $product = Product::find($request->product_id);
+    }
 }

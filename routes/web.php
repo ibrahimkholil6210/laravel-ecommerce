@@ -18,6 +18,7 @@ Route::get('/product/{slug}', 'PageController@productdetails')->name('product.de
 Route::get('/search', 'PageController@search')->name('search');
 Route::get('/category', 'PageController@category')->name('category');
 Route::get('/category/{id}', 'PageController@categoryfind')->name('category.find');
+Route::post('/addtocart', 'PageController@addToCart')->name('poroduct.addToCart');
 
 
 Route::group(['prefix' => 'adminpanel'], function () {
@@ -52,5 +53,5 @@ Route::get('/login', 'PageController@login')->name('login')->middleware('guest')
 Route::get('/register', 'PageController@register')->name('register')->middleware('guest');
 Route::get('/password/reset', 'PageController@reset')->name('password.request');
 
-Route::get('/dashboard', 'dashboardController@index')->name('dashboard')->middleware('auth');
-Route::get('/dashboard/{slug}/edit', 'dashboardController@edit')->name('dashboard.edit')->middleware('auth');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
+Route::get('/dashboard/{slug}/edit', 'DashboardController@edit')->name('dashboard.edit')->middleware('auth');

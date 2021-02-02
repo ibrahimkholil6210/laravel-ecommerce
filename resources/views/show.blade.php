@@ -59,9 +59,10 @@
                     <span>৳ </span>
                     <label>Quantity:</label>
                       
-                    <form action="" method="post" class="pull-right">
-
-                      <input type="text" name="quantity" value="1" />
+                    <form action="{{ route('poroduct.addToCart') }}" method="POST" class="pull-right">
+                      @csrf
+                      <input type="text" name="product_quantity" value="1" name="quantity" />
+                      <input type="hidden" name="product_id" value="{{ $p->id }}">
                       <button type="submit" name="add_to_cart" class="btn btn-fefault cart">
                         <i class="fa fa-shopping-cart"></i>
                         Add to cart
